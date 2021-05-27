@@ -1,7 +1,7 @@
 pipeline{
     agent {
         docker {
-            image 'ruby' //criar um docker com Ruby instalado
+            image 'brunocarrijo/rubywd' //criar um docker com Ruby instalado
         }
     }
     
