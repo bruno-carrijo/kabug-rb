@@ -6,17 +6,17 @@ Repositório do projeto Kabug com Cucumber, Capybara e Ruby
 * Importante que o Ruby esteja instalado (versão 2.5 ou superior)
 
 ### Instalar o Bundler
-'
+`
 gem install bundler
-'
+`
 
 ### Instalar as dependências do Ruby(projeto)
-'
+`
 bundle install
-'
+`
 
 ### Executar locamente(minha maquina)
-'
+`
 bundle exec cucumber
 `
 
