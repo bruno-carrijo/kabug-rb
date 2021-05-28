@@ -5,5 +5,5 @@ end
 
 After do |scenario|
   screenshot = page.save_screenshot("logs/screenshots/#{scenario.__id__}.png")
-  attach screenshot, 'image/png'
+  attach screenshot, 'image/png' #anexar imagens no path screenshots seguido das imagens corretamente
 end
