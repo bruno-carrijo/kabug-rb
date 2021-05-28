@@ -3,25 +3,24 @@ Repositório do projeto Kabug com Cucumber, Capybara e Ruby
 
 ## Como executar o projeto
 
-* Importante que o Ruby esteja instalado (versão 2.5 ou superior)
+* Importante ter o Ruby instalado (versão 2.5 ou superior)
 
 ### Instalar o Bundler
 `
 gem install bundler
 `
 
-### Instalar as dependências do Ruby(projeto)
+### Instalar as dependências do Ruby (projeto)
 `
 bundle install
 `
 
-### Executar locamente(minha maquina)
+### Executar localmente (minha maquina)
 `
 bundle exec cucumber
 `
 
-### Executar no servidor de CI (gerendo reportes JSON)
+### Executar no servidor de CI (gerando reposts JSON)
 `
-bundler exec cucumber -p ci
+bundle exec cucumber -p ci
 `
-

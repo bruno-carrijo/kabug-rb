@@ -1,33 +1,38 @@
-pipeline{
+pipeline {
     agent {
         docker {
-            image 'brunocarrijo/rubywd' //criar um docker com Ruby instalado
+            image 'brunocarrijo/rubywd' //novo Docker do repositorio BrunoCarrijo com RUBY e navegador OK
         }
     }
     
-    stages{
-        stage('Build'){
+    stages {
+        stage('Build') {
             steps {
                 echo 'Building or Resolve Dependencies!'
                 sh 'rm -f Gemfile.lock'
                 sh 'bundle install'
             }
-        }        
-        stage('Test'){
+        }
+        stage('Test') {
             steps {
-                echo 'Runnig regresion tests'
+                echo 'Running regression tests'
                 sh 'bundle exec cucumber -p ci'
             }
-        }
-        stage('UAT'){
-            steps {
-                echo 'Wait for User Acceptance'
-                input (message: 'Go to production?', ok:'Yes')
+            post {
+                always {
+                    cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'logs', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
+                }
             }
         }
-        stage('Prod'){
+        stage('UAT') {
             steps {
-                echo 'WebApp is Ready!!!'
+                echo 'Wait for User Acceptance'
+                input(message: 'Go to production?', ok: 'Yes')
+            }
+        }
+        stage('Prod') {
+            steps {
+                echo 'WebApp is Ready :)'
             }
         }
     }
